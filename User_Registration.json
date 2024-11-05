@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "email": "rx100@gmail.com",
+      "fullname": "rx",
+      "joinDate": 1730793814,
+      "password": "P@ssword1234",
+      "phoneno": 1234567890,
+      "username": "rx"
+    },
+    {
+      "email": "ee100@gmail.com",
+      "fullname": "rx",
+      "joinDate": 1730793868,
+      "password": "P@ssword1234",
+      "phoneno": 2147483647,
+      "username": "rr"
+    },
+    {
+      "email": "ww100@gmail.com",
+      "fullname": "rd",
+      "joinDate": 1730793928,
+      "password": "q1234567@",
+      "phoneno": 1234567890,
+      "username": "rx"
+    },
+    {
+      "email": "yy100@gmail.com",
+      "fullname": "ii",
+      "joinDate": 1730793977,
+      "password": "y123456789@",
+      "phoneno": 1234567890,
+      "username": "ee"
+    },
+    {
+      "email": "ll100@gmail.com",
+      "fullname": "vv",
+      "joinDate": 1730794032,
+      "password": "l123456781@",
+      "phoneno": 1234567890,
+      "username": "ll"
+    },
+    {
+      "email": "ggg100@gmail.com",
+      "fullname": "gg yy",
+      "joinDate": 1730796075,
+      "password": "G@12345678",
+      "phoneno": 1234567890,
+      "username": "gg"
+    },
+    {
+      "email": "visheshgrover02@gmail.com",
+      "fullname": "VISHESH GROVER",
+      "joinDate": 1730802853,
+      "password": "#VISHRI#",
+      "phoneno": 204812582,
+      "username": "VISHESH.GXROVER"
+    }
+  ]
+}
