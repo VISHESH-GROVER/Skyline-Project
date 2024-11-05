@@ -36,8 +36,8 @@ void displayLogo() {
     cout << "                                     " << MAGENTA << "\\___ \\| '_ \\ / _` | __/ _ \\ '_ \\ " << RESET << "| | |_ |/ _` | '__/ _ \\ \n";
     cout << "                                      " << MAGENTA << "____) | | | | (_| | ||  __/ | | | " << RESET << "|__| | | (_| | | | __/ \n";
     cout << "                                    " << MAGENTA << "|_____/|_| |_|\\__,_|\\__\\___|_| |_|" << RESET << "\\_____|\\__,_|_|  \\___| \n";
-    cout << "                                                         " << GREEN << "Cyber Café" << RESET << "                          \n";
-    cout << "\n" << GREEN << "Welcome to Skyline Cyber Café!" << RESET << endl;
+    cout << "                                                         " << GREEN << "Cyber Cafe" << RESET << "                          \n";
+    cout << "\n" << GREEN << "Welcome to Skyline Cyber Cafe!" << RESET << endl;
 }
 
 // User class to represent a customer
@@ -61,20 +61,10 @@ public:
         cout << GREEN << "Session started successfully!" << RESET << endl;
     }
 
-    void endSession(double ratePerHour, double printCost, double scanCost, int prints, int scans) {
-        if (!sessions.empty()) {
-            sessions.back().second = time(0); // End time
-            // Calculate bill for this session
-            double duration = difftime(sessions.back().second, sessions.back().first) / 3600.0; // Convert to hours
-            double sessionBill = (duration * ratePerHour) + (prints * printCost) + (scans * scanCost);
-            totalBill += sessionBill;
-            cout << BLUE << "Session ended successfully!" << RESET << endl;
-            cout << "Session Duration: " << fixed << setprecision(2) << (duration * 60) << " minutes." << endl;
-            cout << "Session Bill: NZD " << fixed << setprecision(2) << sessionBill << endl;
-        }
-        else {
-            cout << RED << "No active session to end." << RESET << endl;
-        }
+    void endSession(double sessionBill) {
+        totalBill += sessionBill;
+        cout << BLUE << "Session ended successfully!" << RESET << endl;
+        cout << "Session Bill: NZD " << fixed << setprecision(2) << sessionBill << endl;
     }
 };
 
@@ -121,7 +111,7 @@ int main() {
     vector<User> users;
     vector<Admin> admins = { Admin("admin@example.com", "admin123") }; // Predefined admin
     int userIDCounter = 1;
-    double ratePerHour = 5.0, printCost = 0.20, scanCost = 0.30;
+    double browsingRate = 0.50, gamingRate = 1.2, printCost = 0.70, scanCost = 0.52;
 
     while (true) {
         clearConsole();
@@ -144,7 +134,7 @@ int main() {
             cout << GREEN << "User registered successfully! User ID: " << userIDCounter - 1 << RESET << endl;
 
         }
-        else if (choice == 2) {
+        else if (choice == 2) { // User login
             string email, password;
             cout << "Enter Email: ";
             cin >> email;
@@ -158,19 +148,80 @@ int main() {
                     cout << CYAN << "Welcome " << user.name << "!" << RESET << endl;
                     user.startSession();
 
-                    // Simulating session activity
-                    cout << BLUE << "Simulating session activity for 2 seconds...\n" << RESET;
-                    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+                    // Loop to display options after successful login
+                 // Inside the user login section after successful login
+                    int userChoice;
+                    do {
+                        cout << YELLOW << "\n--- User Menu ---\n" << RESET;
+                        cout << "1. INTERNET BROWSING\n";
+                        cout << "2. GAMING\n";
+                        cout << "3. PRINTING\n";
+                        cout << "4. SCANNING\n";
+                        cout << "5. View Total Bill\n";          // Added this option
+                        cout << "6. Return to Main Menu\n";      // Changed to be 6
+                        cout << "7. Exit Program\n";              // Changed to be 7
+                        cout << "Choose an option: ";
+                        cin >> userChoice;
 
-                    // Ending session
-                    user.endSession(ratePerHour, printCost, scanCost, 5, 2); // Example prints/scans for testing
+                        switch (userChoice) {
+                        case 1: {
+                            cout << GREEN << "You can use this service for maximum 1 hour. The rate is $0.50 per minute.\n" << RESET;
+                            int minutes;
+                            cout << "Enter the number of minutes you used: ";
+                            cin >> minutes;
+                            if (minutes > 60) minutes = 60;  // Max 1 hour
+                            double sessionBill = minutes * browsingRate;
+                            user.endSession(sessionBill);
+                            break;
+                        }
+                        case 2: {
+                            cout << GREEN << "You can play for maximum 1 hour. The rate is $1.20 per minute.\n" << RESET;
+                            int minutes;
+                            cout << "Enter the number of minutes you played: ";
+                            cin >> minutes;
+                            if (minutes > 60) minutes = 60;  // Max 1 hour
+                            double sessionBill = minutes * gamingRate;
+                            user.endSession(sessionBill);
+                            break;
+                        }
+                        case 3: {
+                            int prints;
+                            cout << "Enter the number of pages to print: ";
+                            cin >> prints;
+                            double printBill = prints * printCost;
+                            user.endSession(printBill);
+                            break;
+                        }
+                        case 4: {
+                            int scans;
+                            cout << "Enter the number of pages to scan: ";
+                            cin >> scans;
+                            double scanBill = scans * scanCost;
+                            user.endSession(scanBill);
+                            break;
+                        }
+                        case 5: {
+                            cout << GREEN << "Your total bill is: NZD " << fixed << setprecision(2) << user.totalBill << RESET << endl; // Display total bill
+                            break;
+                        }
+                        case 6:
+                            cout << CYAN << "Returning to Main Menu...\n" << RESET;
+                            break; // Return to main menu
+                        case 7:
+                            cout << RED << "Exiting program...\n" << RESET;
+                            return 0; // Exit program
+                        default:
+                            cout << RED << "Invalid choice. Please try again.\n" << RESET;
+                        }
+
+                    } while (userChoice != 6 && userChoice != 7);// Exit program or return to main menu
+                    // Exit program or return to main menu
                     break;
                 }
             }
             if (!userFound) {
                 cout << RED << "Invalid email or password." << RESET << endl;
             }
-
         }
         else if (choice == 3) {
             string email, password;
@@ -191,7 +242,6 @@ int main() {
             if (!adminFound) {
                 cout << RED << "Invalid admin credentials." << RESET << endl;
             }
-
         }
         else if (choice == 4) {
             cout << RED << "Exiting...\n" << RESET;
@@ -206,5 +256,6 @@ int main() {
         cin.get();  // Wait for Enter key
     }
 
-    return 0;
+    system("pause>0");
+
 }
