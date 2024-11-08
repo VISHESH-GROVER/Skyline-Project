@@ -450,7 +450,7 @@ void showRegistrationMenu() {
 }
 
 int main() {
-    cout << "welcome";
+    
 
     while (true) {
 
