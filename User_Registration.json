@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "role": "User",
+      "username": "sa",
+      "password": "Santosh@123",
+      "fullname": "santosh adhikari",
+      "email": "santoshadhikari15127@gmail.com",
+      "phoneno": 2121212121
+    },
+    {
+      "role": "User",
+      "username": "sas",
+      "password": "Santosh@123",
+      "fullname": "asn asas",
+      "email": "santosh@123gmail.com",
+      "phoneno": 0202020202
+    },
+    {
+      "role": "User",
+      "username": "VISHESH.GXROVER",
+      "password": "#Vishri17",
+      "fullname": "VISHESH GROVER",
+      "email": "VISHRI@gmail.com",
+      "phoneno": 0204812582
+    },
+    {
+      "role": "User",
+      "username": "asasasasasa",
+      "password": "Ssass@123",
+      "fullname": "sassa",
+      "email": "asa@123gmail.com",
+      "phoneno": +54545454545
+    },
+    {
+      "role": "User",
+      "username": "sdsdsdsdsds",
+      "password": "Sa@123455",
+      "fullname": "ssasasasa",
+      "email": "San@123gmail.com",
+      "phoneno": +2121212121
+    },
+    {
+      "role": "User",
+      "username": "a45545454545",
+      "password": "Santosh@123",
+      "fullname": "sasasasasa",
+      "email": "san@gmail.com",
+      "phoneno": +4545454545444
+    },
+    {
+      "role": "User",
+      "username": "assasaassasa",
+      "password": "Santosh@123",
+      "fullname": "sasasasa",
+      "email": "sas@gmail.com",
+      "phoneno": +1234567891234
+    },
+    {
+      "role": "User",
+      "username": "sasasasasas",
+      "password": "Santosh@123",
+      "fullname": "sassasasa",
+      "email": "sas@gmail.com",
+      "phoneno": +1234567891234
+    }
+  ]
+}
